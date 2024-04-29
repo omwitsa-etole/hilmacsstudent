@@ -6,6 +6,8 @@ const path = require('path');
 const session = require('express-session');
 const app = express();
 const bodyParser = require('body-parser');
+const fetchFunction = require("./modules/fetch")
+const resource = require("./properties.json")
 
 app.use(session({
   secret: 'your-secret-key',
@@ -35,18 +37,52 @@ app.use(express.json());
 const indexRouter = require('./routes/auth');
 const auth = require("./routes/checker")
 const fetchRouter = require("./routes/fetch")
+const Library = require("./routes/library")
+
 
 app.use('/', indexRouter);
 app.use('/fetch', fetchRouter);
+app.use('/',Library)
+
+const splitLength = (string, separator) => {
+  if (!string || typeof string !== 'string') {
+    return 0;
+  }
+  
+  const parts = string.split(separator || ',');
+  return parts.length;
+};
+
+const isInList = (item, list) => {
+  if (!Array.isArray(list)) {
+    return false;
+  }
+  
+  return list.includes(item);
+};
+
+const isInString = (item, string) => {
+  if (!string.includes(item)) {
+    return false;
+  }
+  
+  return string.includes(item);
+};
+
 
 // Set Handlebars as the view engine
 app.set('views', path.join(__dirname, 'files'));
-app.engine('.html', exphbs({ extname: 'html', defaultLayout: "index"}));
-app.set('view engine', '.html');
+app.engine('handlebars', exphbs({ extname: 'handlebars', defaultLayout: "index",helpers: {
+  splitLength: splitLength,
+  isInList:isInList,
+  isInString:isInString
+}}));
+app.set('view engine', 'handlebars');
 
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/assets', express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.join(__dirname, 'files')));
+app.use('/assets', express.static(path.join(__dirname, 'files/assets')));
 
 app.get('/student-profile.html', auth,(req, res) => {
   res.render('student\\student-profile', { pageTitle: req.session.user.hcFullnames.toUpperCase(),user:req.session.user,fullnames:req.session.user.hcFullnames });
@@ -62,21 +98,25 @@ app.get('/results', auth,(req, res) => {
 
 
 app.get('/path.html', auth,(req, res) => {
-  res.render('paths', { pageTitle: 'Select Path',user:req.session.user });
+  res.render('paths', { pageTitle: 'Select Path',user:req.session.user ,session:req.session});
 });
 
 
-app.get('/library-filters.html', auth,(req, res) => {
-  res.render('library\\library-filters.html', { pageTitle: 'All Courses',user:req.session.user });
+
+app.get('/library-filters.html', auth,async (req, res) => {
+  let data = {}
+  const library  = await Library.getLibrary(req)
+  const classes  = await Library.getClasses(req)
+  console.log("libary",library)
+  data.subjects = library ? library : []
+  data.classes = classes ?classes : []
+  res.render('library', { pageTitle: 'All Courses',user:req.session.user,library:data });
 });
 
 app.get('/library-featured.html', auth,(req, res) => {
-  res.render('library\\library-featured.html', { pageTitle: 'All Courses',user:req.session.user });
+  res.render('library\\library-featured.html', { pageTitle: 'All Courses',library:{subjects:[]},user:req.session.user });
 });
 
-app.get('/library.html', auth,(req, res) => {
-  res.render('library', { pageTitle: 'All Courses',user:req.session.user });
-});
 
 app.get('/courses', auth,(req, res) => {
   res.render('library', { pageTitle: 'All Courses',user:req.session.user });
@@ -86,13 +126,8 @@ app.get('/student-my-courses.html', auth,(req, res) => {
   res.render('course\\student-my-courses', { pageTitle: 'Current Courses',user:req.session.user });
 });
 
-app.get('/student/courses', auth,(req, res) => {
-  res.render('course\\student-my-courses', { pageTitle: 'Current Courses',user:req.session.user });
-});
 
-app.get('/student/courses/:id', auth,(req, res) => {
-  res.render('course\\student-take-course', { pageTitle: 'Take Course',user:req.session.user });
-});
+app.use('/student/courses',require('./routes/course'))
 
 app.get('/student/lesson/:id', auth,(req, res) => {
   res.render('course\\student-take-lesson', { pageTitle: 'Take Course' });
@@ -119,7 +154,7 @@ app.get('/payment', auth,(req, res) => {
 });
 
 app.get('/discussions', auth,(req, res) => {
-  res.render('student-discussions', { pageTitle: 'Student Discussions' });
+  res.render('student-discussions', { pageTitle: 'Student Discussions',user:req.session.user,session:req.session });
 });
 
 app.get('/discussion/:title', auth,(req, res) => {
@@ -134,10 +169,8 @@ app.get('/student/edit', auth,(req, res) => {
   res.render('student\\student-edit-account', { pageTitle: 'Edit Dashboard',user:req.session.user });
 });
 
-app.get('/student', auth,(req, res) => {
-  console.log("names=",req.session.user.hcFullnames)
-  res.render('student\\student-dashboard', { pageTitle: 'Student Dashboard',user:req.session.user,fullnames:req.session.user.hcFullnames });
-});
+app.use("/student",require("./routes/student.js"))
+
 
 
 app.get('/instructor', auth,(req, res) => {

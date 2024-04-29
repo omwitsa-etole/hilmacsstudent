@@ -1,6 +1,6 @@
 module.exports  = async function (token,Url,method,payload,next) {
     try {
-     
+        console.log("token=>",token)
         const options = {
           method: method || 'GET', // Default to GET if method is not provided
           headers: {
@@ -15,6 +15,7 @@ module.exports  = async function (token,Url,method,payload,next) {
     
         const response = await fetch(Url, options);
         const data = await response.json();
+        //console.log("status=>",response.status)
         if(response.status === 401){
           next(undefined,response);
         }

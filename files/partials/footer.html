@@ -7,20 +7,9 @@
                             <div class="py-16pt pl-16pt menu">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#courses-development" data-toggle="tab">Development</a>
+                                        <a class="nav-link active" href="#courses-development" data-toggle="tab">All Courses</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#courses-design" data-toggle="tab">Design</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#courses-photography" data-toggle="tab">Photography</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#courses-marketing" data-toggle="tab">Marketing</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#courses-business" data-toggle="tab">Business</a>
-                                    </li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -34,39 +23,16 @@
                                             <div class="flex">
                                                 <h5 class="text-black-100">Courses</h5>
                                                 <ul class="nav flex-column mb-24pt">
-
+                                                    {{#each req.session.courses as |class|}}
                                                     <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">Web Development</a>
+                                                        <a class="nav-link px-0" href="/student/courses/{{class.id}}">{{class.hcName}}</a>
                                                     </li>
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">JavaScript</a>
-                                                    </li>
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">HTML</a>
-                                                    </li>
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">CSS</a>
-                                                    </li>
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">WordPress</a>
-                                                    </li>
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">PHP</a>
-                                                    </li>
-
-                                                    <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">iOS Development</a>
-                                                    </li>
-
+                                                    {{/each}}
+                                                   
                                                 </ul>
                                             </div>
                                             <div>
-                                                <a href="library.html" class="btn btn-block text-center btn-secondary">Library</a>
+                                                <a href="/library.html" class="btn btn-block text-center btn-secondary">Library</a>
                                             </div>
                                         </div>
                                     </div>
@@ -138,37 +104,34 @@
                                                 <ul class="nav flex-column mb-24pt">
 
                                                     <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">Illustration</a>
+                                                        <a class="nav-link px-0" href="/library.html">Illustration</a>
                                                     </li>
 
                                                     <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">Design Skills</a>
+                                                        <a class="nav-link px-0" href="/library.html">Design Skills</a>
                                                     </li>
 
                                                     <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">Design Techniques</a>
+                                                        <a class="nav-link px-0" href="/library.html">Design Techniques</a>
                                                     </li>
 
                                                     <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">Page Layout</a>
+                                                        <a class="nav-link px-0" href="/library.html">Page Layout</a>
                                                     </li>
 
                                                     <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">Projects</a>
+                                                        <a class="nav-link px-0" href="/library.html">Projects</a>
                                                     </li>
 
                                                     <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">Drawing</a>
+                                                        <a class="nav-link px-0" href="/library.html">Drawing</a>
                                                     </li>
 
-                                                    <li class="nav-item">
-                                                        <a class="nav-link px-0" href="library.html">Typography</a>
-                                                    </li>
-
+                                                    
                                                 </ul>
                                             </div>
                                             <div>
-                                                <a href="library.html" class="btn btn-block text-center btn-secondary">Library</a>
+                                                <a href="/library.html" class="btn btn-block text-center btn-secondary">Library</a>
                                             </div>
                                         </div>
                                     </div>
@@ -177,7 +140,7 @@
                                             <div class="flex">
                                                 <h5 class="text-black-100">Learning Paths</h5>
                                                 <div class="mb-16pt">
-                                                    <a href="path.html" class="media text-black-100">
+                                                    <a href="/path.html" class="media text-black-100">
                                                         <img src="assets/images/paths/angular_40x40@2x.png" width="40" height="40" alt="Angular" class="media-left rounded">
                                                         <span class="media-body">
                                                             <span class="card-title d-block mb-0">Angular</span>
@@ -186,7 +149,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="mb-16pt">
-                                                    <a href="path.html" class="media text-black-100">
+                                                    <a href="/path.html" class="media text-black-100">
                                                         <img src="assets/images/paths/swift_40x40@2x.png" width="40" height="40" alt="Swift" class="media-left rounded">
                                                         <span class="media-body">
                                                             <span class="card-title d-block mb-0">Swift</span>
@@ -195,7 +158,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="mb-16pt">
-                                                    <a href="path.html" class="media text-black-100">
+                                                    <a href="/path.html" class="media text-black-100">
                                                         <img src="assets/images/paths/react_40x40@2x.png" width="40" height="40" alt="React Native" class="media-left rounded">
                                                         <span class="media-body">
                                                             <span class="card-title d-block mb-0">React Native</span>
@@ -204,7 +167,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="mb-16pt">
-                                                    <a href="path.html" class="media text-black-100">
+                                                    <a href="/path.html" class="media text-black-100">
                                                         <img src="assets/images/paths/wordpress_40x40@2x.png" width="40" height="40" alt="WordPress" class="media-left rounded">
                                                         <span class="media-body">
                                                             <span class="card-title d-block mb-0">WordPress</span>
@@ -213,7 +176,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="mb-24pt">
-                                                    <a href="path.html" class="media text-black-100">
+                                                    <a href="/path.html" class="media text-black-100">
                                                         <img src="assets/images/paths/devops_40x40@2x.png" width="40" height="40" alt="Development Tools" class="media-left rounded">
                                                         <span class="media-body">
                                                             <span class="card-title d-block mb-0">Development Tools</span>
@@ -223,7 +186,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <a href="paths.html" class="btn btn-block text-center btn-outline-secondary">Learning Paths</a>
+                                                <a href="/paths.html" class="btn btn-block text-center btn-outline-secondary">Learning Paths</a>
                                             </div>
                                         </div>
                                     </div>
@@ -474,7 +437,7 @@
                                                 </ul>
                                             </div>
                                             <div>
-                                                <a href="library.html" class="btn btn-block text-center btn-secondary">Library</a>
+                                                <a href="/library.html" class="btn btn-block text-center btn-secondary">Library</a>
                                             </div>
                                         </div>
                                     </div>

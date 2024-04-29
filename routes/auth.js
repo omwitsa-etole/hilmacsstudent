@@ -32,6 +32,9 @@ router.post('/login', async (req, res) => {
             if (nextUrl) {
                 res.redirect(nextUrl);
             }
+            if(req.query.next){
+              return res.redirect(req.query.next)
+            }
             return res.redirect("/student")
         }
         return res.redirect(`/login?message${data.message}`)
@@ -48,7 +51,7 @@ router.post('/signup', async (req, res) => {
         if(e.ok){
             return res.redirect("/login?message="+data.message)
         }else{
-            return res.redirect("/signup?message="+data.messag)
+            return res.redirect("/signup?message="+data.message)
         }
     })
 })

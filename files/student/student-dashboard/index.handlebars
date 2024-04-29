@@ -1,0 +1,508 @@
+<div class="mdk-header-layout__content page-content ">
+
+	<div class="bg-gradient-primary border-bottom-white py-32pt">
+		<div class="container d-flex flex-column flex-md-row align-items-center text-center text-md-left">
+			<img src="{{user.hcImgPath}}" width="104" class="mr-md-32pt mb-32pt mb-md-0" alt="student">
+			<div class="flex mb-32pt mb-md-0">
+				<h2 class="text-white mb-0">{{user.hcFullnames}}</h2>
+				<p class="lead text-white-50 d-flex align-items-center">{{user.hcUseRole}} <span class="ml-16pt d-flex align-items-center"><i class="material-icons icon-16pt mr-4pt">opacity</i> 2,300 IQ</span></p>
+			</div>
+			<a href="/student-edit-account.html" class="btn btn-outline-white">Edit account</a>
+		</div>
+	</div>
+
+	<div class="navbar navbar-expand-sm navbar-dark-white bg-gradient-primary p-sm-0 ">
+		<div class="container page__container">
+
+			<!-- Navbar toggler -->
+			<button class="navbar-toggler ml-n16pt" type="button" data-toggle="collapse" data-target="#navbar-submenu2">
+				<span class="material-icons">people_outline</span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbar-submenu2">
+				<div class="navbar-collapse__content pb-16pt pb-sm-0">
+					<ul class="nav navbar-nav">
+
+						<li class="nav-item active">
+							<a href="/student" class="nav-link">Dashboard</a>
+						</li>
+						<li class="nav-item">
+							<a href="/student/courses" class="nav-link">Courses</a>
+						</li>
+						<li class="nav-item">
+							<a href="/discussions" class="nav-link">Discussions</a>
+						</li>
+
+					</ul>
+					<ul class="nav navbar-nav ml-auto">
+						<li class="nav-item">
+							<a href="/student-profile.html" class="nav-link">Profile</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container page__container">
+		<div class="page-section">
+			
+
+			<div class="row mb-lg-8pt">
+				<div class="col-lg-6">
+					{{#each exams as |exam|}}
+					<div class="card card--elevated card-course overlay js-overlay mdk-reveal js-mdk-reveal " data-partial-height="40" data-toggle="popover" data-trigger="click">
+						<div class="card-header d-flex align-items-center">
+							<div class="h2 mb-0 mr-3 text-accent">{{exam.hcStatus}}</div>
+							<div class="flex">
+								<p class="mb-0">Exam :<strong>{{exam.hcExam}}</strong></p>
+								<p class="text-50 mb-0 mt-n1">{{exam.hAbbr}}</p>
+							</div>
+							<div class="dropdown">
+								<a href="#" class="dropdown-toggle text-70" data-toggle="dropdown">Popular Topics</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									{{#each result.courses as |class|}}
+										{{#if (isInString class._id exam.hcStreams)}}
+										<a href="/student/courses/lesson/{{class._id}}" class="dropdown-item">Take {{class.hcName}} </a>
+										{{else}}
+										<a href="#" class="dropdown-item">{{class.hcName}}</a>
+										{{/if}}
+										
+									{{/each}}
+								</div>
+							</div>
+						</div>
+						<div class="card-body p-24pt">
+							<div class="chart" style="height: 144px;">
+
+								{{#each result.courses as |class|}}
+									{{#if (isInString class._id exam.hcStreams)}}
+									<a href="" class="btn">Unit {{class.hcName}}</a>
+									{{else}}
+									<a href="" class="btn ">Unit {{class.hcName}}</a>
+									{{/if}}
+									
+								{{/each}}
+							</div>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+				<!---
+				<div class="col-lg-6">
+
+					<div class="card">
+						<div class="card-header d-flex align-items-center border-0">
+							<div class="h2 mb-0 mr-3 text-accent">432</div>
+							<div class="flex">
+								<p class="mb-0"><strong>Experience IQ</strong></p>
+								<p class="text-50 mb-0 mt-n1">4 days streak this week</p>
+							</div>
+							<i class="material-icons text-muted ml-2">trending_up</i>
+						</div>
+						<div class="card-body pt-0">
+							<div class="chart" style="height: 128px;">
+								<canvas id="iqChart" class="chart-canvas"></canvas>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+					<div id="carouselExampleFade" class="carousel carousel-card slide mb-24pt">
+						<div class="carousel-inner">
+
+							<div class="carousel-item active">
+									<!---
+								<a class="card mb-0" href="">
+									<img src="/assets/images/achievements/flinto.png" alt="Flinto" class="card-img" style="max-height: 100%; width: initial;">
+									<div class="fullbleed bg-primary" style="opacity: .5;"></div>
+									<span class="card-body fullbleed">
+										<span class="row">
+											<span class="col-5 text-center">
+												<span class="h5 text-white text-uppercase font-weight-normal m-0 d-block">Achievement</span>
+												<span class="text-white-60 d-block mb-16pt">Jun 5, 2018</span>
+												<img src="/assets/images/illustration/achievement/128/white.png" alt="achievement">
+											</span>
+											<span class="col-7 d-flex flex-column">
+												<span class="text-right flex">
+													<img src="/assets/images/paths/flinto_40x40@2x.png" width="64" alt="Flinto" class="rounded">
+												</span>
+												<span>
+													<span class="h4 text-white m-0 d-block">Flinto</span>
+													<span class="text-white-60">Introduction to The App Design Application</span>
+												</span>
+											</span>
+										</span>
+									</span>
+								</a>
+
+							</div>
+
+						
+
+						</div>
+					  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+<span class="carousel-control-icon material-icons" aria-hidden="true">keyboard_arrow_left</span>
+<span class="sr-only">Previous</span>
+</a> 
+						<a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+							<span class="carousel-control-icon material-icons" aria-hidden="true">keyboard_arrow_right</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+
+
+				</div>--->
+			</div>
+
+			<div class="row mb-lg-8pt">
+				<div class="col-lg-6 mb-8pt mb-sm-0">
+					<div class="page-heading">
+						<h4>Learning Subjects</h4>
+						<a href="/student/courses" class="text-underline ml-sm-auto">My learning subjects</a>
+					</div>
+
+					
+					{{#each subjects as |subject|}}
+					<div class="card card-path js-overlay stack stack--1 mb-16pt" data-toggle="popover" data-trigger="click">
+						<div class="card-body">
+							<div class="d-flex align-items-center">
+								<div class="flex">
+									<div class="d-flex align-items-center">
+										<div class="rounded mr-16pt z-0 o-hidden">
+											<div class="overlay">
+												<img src="/assets/images/paths/angular_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
+												<span class="overlay__content overlay__content-transparent">
+													<span class="overlay__action d-flex flex-column text-center lh-1">
+														<small class="h6 small text-white mb-0" style="font-weight: 500;">80%</small>
+													</span>
+												</span>
+											</div>
+										</div>
+										<div class="flex">
+											<div class="card-title text-body mb-0">{{subject.hcName}}</div>
+											<div class="text-muted d-flex lh-1">1 Unit</div>
+										</div>
+									</div>
+								</div>
+								{{#if (isInList subject._id session.user.subjects)}}
+								<a href="/path.html" class="ml-4pt btn btn-link text-secondary">Resume</a>
+								{{else}}
+								<a href="/path.html" class="ml-4pt btn btn-link text-secondary">Start</a>
+								{{/if}}
+								
+							</div>
+						</div>
+					</div>
+					<div class="popoverContainer d-none">
+						<div class="media">
+							<div class="media-left">
+								<img src="/assets/images/paths/angular_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
+							</div>
+							<div class="media-body">
+								<div class="card-title mb-0">{{subject.hcName}}</div>
+								<span class="text-black-50 d-flex lh-1">1 unit</span>
+							</div>
+						</div>
+
+						<div class="my-32pt">
+							<div class="d-flex align-items-center mb-8pt justify-content-center">
+								{{subject.hcUnit}}
+							</div>
+							<div class="d-flex align-items-center justify-content-center">
+								{{#if (isInList subject._id session.user.subjects)}}
+								<a href="/path.html" class="btn btn-primary mr-8pt">Resume</a>
+								{{else}}
+								<a href="/path.html" class="btn btn-outline-secondary ml-0">Start over</a>
+								{{/if}}
+								
+								
+							</div>
+						</div>
+
+						<div class="d-flex align-items-center">
+							<small class="text-black-50 mr-8pt">Your rating</small>
+							<div class="rating mr-8pt" style="display:none;">
+								<span class="rating__item"><span class="material-icons text-primary">star</span></span>
+								<span class="rating__item"><span class="material-icons text-primary">star</span></span>
+								<span class="rating__item"><span class="material-icons text-primary">star</span></span>
+								<span class="rating__item"><span class="material-icons text-primary">star</span></span>
+								<span class="rating__item"><span class="material-icons text-primary">star_border</span></span>
+							</div>
+							<small class="text-black-50">4/5</small>
+						</div>
+					</div>
+					{{/each}}
+				
+				</div>
+				<div class="col-lg-6">
+					<div class="page-heading">
+						<h4>Courses</h4>
+						<a href="student-my-courses.html" class="text-underline ml-sm-auto">My courses</a>
+					</div>
+
+
+
+					<div class="position-relative carousel-card">
+						<div class="js-mdk-carousel row d-block" id="carousel-courses1">
+
+							<a class="carousel-control-next js-mdk-carousel-control mt-n24pt" href="#carousel-courses1" role="button" data-slide="next">
+								<span class="carousel-control-icon material-icons" aria-hidden="true">keyboard_arrow_right</span>
+								<span class="sr-only">Next</span>
+							</a>
+
+							<div class="mdk-carousel__content">
+								{{#each courses as |class|}}
+								<div class="col-12 col-sm-6">
+
+									<div class="card card--elevated card-course overlay js-overlay mdk-reveal js-mdk-reveal " data-partial-height="40" data-toggle="popover" data-trigger="click">
+
+										<a href="/student/courses/lesson/{{class._id}}" class="js-image" data-position="">
+											<img src="/assets/images/paths/angular_430x168.png" alt="course">
+											<span class="overlay__content">
+												<span class="overlay__action d-flex flex-column text-center">
+													<i class="material-icons">play_circle_outline</i>
+													<small>Resume course</small>
+												</span>
+											</span>
+										</a>
+
+										<div class="mdk-reveal__content">
+											<div class="card-body">
+												<div class="d-flex">
+													<div class="flex">
+														<a class="card-title" href="/student/courses/lesson/{{class._id}}">{{class.hcName}}</a>
+														<small class="text-50 font-weight-bold mb-4pt"></small>
+													</div>
+													<a href="/student/courses/lesson/{{class._id}}" class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite</a>
+												</div>
+												<div class="d-flex">
+													<div class="rating flex" style="display:none;">
+														<span class="rating__item"><span class="material-icons">star</span></span>
+														<span class="rating__item"><span class="material-icons">star</span></span>
+														<span class="rating__item"><span class="material-icons">star</span></span>
+														<span class="rating__item"><span class="material-icons">star</span></span>
+														<span class="rating__item"><span class="material-icons">star_border</span></span>
+													</div>
+													<small class="text-50">6 hours</small>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="popoverContainer d-none">
+										<div class="media">
+											<div class="media-left">
+												<img src="/assets/images/paths/angular_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
+											</div>
+											<div class="media-body">
+												<div class="card-title mb-0">{{class.hcName}}</div>
+												<p class="lh-1 mb-0">
+													<span class="text-black-50 small">with</span>
+													<span class="text-black-50 small font-weight-bold">{{class.teacher}}</span>
+												</p>
+											</div>
+										</div>
+
+
+										<div class="my-32pt">
+											<div class="d-flex align-items-center mb-8pt justify-content-center">
+												{{class.desc}}
+											</div>
+											<div class="d-flex align-items-center justify-content-center">
+												{{#if (isInList class._id session.user.courses)}}
+												<a href="/student/courses/lesson/{{class._id}}" class="btn btn-primary mr-8pt">Resume</a>
+												{{else}}
+												<a href="/student/courses/lesson/{{class._id}}" class="btn btn-outline-secondary ml-0">Start</a>
+												
+												{{/if}}
+											</div>
+										</div>
+
+										<div class="d-flex align-items-center">
+											<small class="text-black-50 mr-8pt">Your rating</small>
+											<div class="rating mr-8pt" style="display:none;">
+												<span class="rating__item"><span class="material-icons text-primary">star</span></span>
+												<span class="rating__item"><span class="material-icons text-primary">star</span></span>
+												<span class="rating__item"><span class="material-icons text-primary">star</span></span>
+												<span class="rating__item"><span class="material-icons text-primary">star</span></span>
+												<span class="rating__item"><span class="material-icons text-primary">star_border</span></span>
+											</div>
+											<small class="text-black-50">4/5</small>
+										</div>
+
+
+									</div>
+
+								</div>
+								{{/each}}
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+			<h4>Discussions</h4>
+
+			<div class="card">
+				<div class="card-header">
+					<div class="row align-items-center" style="white-space: nowrap;">
+						<div class="col-lg-auto">
+							<form class="search-form search-form--light d-lg-inline-flex mb-8pt mb-lg-0" action="student-discussions.html">
+								<input type="text" class="form-control w-lg-auto" placeholder="Search discussions">
+								<button class="btn" type="submit" role="button"><i class="material-icons">search</i></button>
+							</form>
+						</div>
+						<div class="col-lg d-flex flex-wrap align-items-center">
+							<div class="ml-lg-auto dropdown">
+								<a href="#" class="btn btn-link dropdown-toggle text-70" data-toggle="dropdown">My Posts</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a href="" class="dropdown-item active">My Posts</a>
+									<a href="" class="dropdown-item">All Posts</a>
+								</div>
+							</div>
+							<a href="/discussions/ask" class="btn btn-outline-secondary">Ask a question</a>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="list-group list-group-flush">
+
+					<div class="list-group-item p-3">
+						<div class="row align-items-center">
+							<div class="col-md-3 mb-8pt mb-md-0">
+								<div class="media">
+									<div class="media-left mr-16pt">
+										<a href="/student-profile.html"><img src="/img/defaults/user.jpg" width="40" alt="avatar" class="rounded-circle"></a>
+									</div>
+									<div class="media-body media-middle">
+										<p class="text-muted m-0">2 days ago</p>
+										<p class="m-0"><a href="/student-profile.html" class="text-body">Laza Bogdan</a></p>
+									</div>
+								</div>
+							</div>
+							<div class="col mb-8pt mb-md-0">
+								<p class="mb-8pt"><a href="/student-discussion.html" class="text-body"><strong>Using Angular HttpClientModule instead of HttpModule</strong></a></p>
+
+
+								<a href="/student-discussion.html" class="chip chip-outline-secondary">Angular fundamentals</a>
+
+
+							</div>
+							<div class="col-auto d-flex flex-column align-items-center justify-content-center">
+								<h5 class="m-0">1</h5>
+								<p class="lh-1 mb-0"><small class="text-70">answers</small></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="list-group-item p-3">
+						<div class="row align-items-center">
+							<div class="col-md-3 mb-8pt mb-md-0">
+								<div class="media">
+									<div class="media-left mr-16pt">
+										<a href="/student-profile.html"><img src="/img/defaults/user.jpg" width="40" alt="avatar" class="rounded-circle"></a>
+									</div>
+									<div class="media-body media-middle">
+										<p class="text-muted m-0">3 days ago</p>
+										<p class="m-0"><a href="/student-profile.html" class="text-body">Adam Curtis</a></p>
+									</div>
+								</div>
+							</div>
+							<div class="col mb-8pt mb-md-0">
+								<p class="mb-0"><a href="/student-discussion.html" class="text-body"><strong>Why am I getting an error when trying to install angular/http@2.4.2</strong></a></p>
+
+							</div>
+							<div class="col-auto d-flex flex-column align-items-center justify-content-center">
+								<h5 class="m-0">1</h5>
+								<p class="lh-1 mb-0"><small class="text-70">answers</small></p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="card-body text-center">
+					<a href="/student-discussions.html" class="text-underline">View more discussions</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<div class="js-fix-footer bg-white border-top-2">
+		<div class="container page-section py-lg-48pt">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-6 col-md-4 mb-24pt mb-md-0">
+							<h4 class="text-70">Learn</h4>
+							<nav class="nav nav-links nav--flush flex-column">
+								<a class="nav-link" href="/library.html">Library</a>
+								<a class="nav-link" href="/library-featured.html">Featured</a>
+								<a class="nav-link" href="/library-filters.html">Explore</a>
+								<a class="nav-link" href="/paths.html">Learning Paths</a>
+							</nav>
+						</div>
+						<div class="col-6 col-md-4 mb-24pt mb-md-0">
+							<h4 class="text-70">Join us</h4>
+							<nav class="nav nav-links nav--flush flex-column">
+								<a class="nav-link" href="/pricing.html">Pricing</a>
+								<a class="nav-link" href="/login.html">Login</a>
+								<a class="nav-link" href="/signup.html">Sign Up</a>
+								<a class="nav-link" href="/signup-payment.html">Payment</a>
+							</nav>
+						</div>
+						<div class="col-6 col-md-4 mb-32pt mb-md-0">
+							<h4 class="text-70">Community</h4>
+							<nav class="nav nav-links nav--flush flex-column">
+								<a class="nav-link" href="/student-discussions.html">Discussions</a>
+								<a class="nav-link" href="/student-discussions-ask.html">Ask Question</a>
+								<a class="nav-link" href="/student-profile.html">Student Profile</a>
+								<a class="nav-link" href="/instructor-profile.html">Instructor Profile</a>
+							</nav>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="bg-footer page-section py-lg-32pt">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-sm-4 mb-24pt mb-md-0">
+						<p class="text-white-70 mb-8pt"><strong>Follow us</strong></p>
+						<nav class="nav nav-links nav--flush">
+							<a href="#" class="nav-link mr-8pt"><img src="/assets/images/icon/footer/facebook-square@2x.png" width="24" height="24" alt="Facebook"></a>
+							<a href="#" class="nav-link mr-8pt"><img src="/assets/images/icon/footer/twitter-square@2x.png" width="24" height="24" alt="Twitter"></a>
+							<a href="#" class="nav-link mr-8pt"><img src="/assets/images/icon/footer/vimeo-square@2x.png" width="24" height="24" alt="Vimeo"></a>
+							<a href="#" class="nav-link"><img src="/assets/images/icon/footer/youtube-square@2x.png" width="24" height="24" alt="YouTube"></a>
+						</nav>
+					</div>
+					<div class="col-md-6 col-sm-4 mb-24pt mb-md-0 d-flex align-items-center">
+						<a href="" class="btn btn-outline-white">English <span class="icon--right material-icons">arrow_drop_down</span></a>
+					</div>
+					<div class="col-md-4 text-md-right">
+						<p class="mb-8pt d-flex align-items-md-center justify-content-md-end">
+							<a href="" class="text-white-70 text-underline mr-16pt">Terms</a>
+							<a href="" class="text-white-70 text-underline">Privacy policy</a>
+						</p>
+						<p class="text-white-50 mb-0">Copyright 2024 &copy; All rights reserved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
