@@ -19,8 +19,8 @@
 		<h4 class="flex mb-0 mr-sm-24pt d-none d-sm-block">Featured</h4>
 		<div class="d-flex flex-wrap">
 			{{#each session.subjects as |subject|}}
-			<a href="/path.html" class="m-8pt">
-				<img src="/images/paths/angular_40x40@2x.png" width="40" alt={{subject.hcName}} class="rounded">
+			<a href="/path" class="m-8pt">
+				<img src="/assets/images/paths/angular_430x168.png" width="40" alt={{subject.hcName}} class="rounded">{{subject.hcName}}
 			</a>
 			{{/each}}
 		</div>
@@ -64,14 +64,14 @@
 	<div class="row mb-16pt">
 		
 		<div class="col-sm-6 col-xxl-3">
-
+			{{#each session.classes as |class|}}
 			<div class="card card-path overlay js-overlay stack" data-toggle="popover" data-trigger="click">
-				<a href="/path.html" class="js-image card-img-top" data-position="center">
-					<img src="/images/paths/angular_430x168.png" alt="course">
+				<a href="/path" class="js-image card-img-top" data-position="center">
+					<img src="/assets/images/paths/angular_430x168.png" alt="course">
 					<span class="overlay__content">
 						<span class="overlay__action d-flex flex-column text-center">
 							<i class="material-icons">play_circle_outline</i>
-							<small>View path</small>
+							<small>{{class.hcName}}</small>
 						</span>
 					</span>
 				</a>
@@ -80,14 +80,14 @@
 					<div class="d-flex align-items-center">
 						<div class="flex">
 							<div class="d-flex align-items-center">
-								<img src="/images/paths/wordpress_40x40@2x.png" width="40" height="40" alt="Angular" class="mr-16pt rounded">
+								<img src="/assets/images/paths/wordpress_40x40@2x.png" width="40" height="40" alt="Angular" class="mr-16pt rounded">
 								<div class="flex">
-									<div class="card-title text-body mb-0">WordPress</div>
-									<div class="text-muted d-flex lh-1">24 courses</div>
+									<div class="card-title text-body mb-0">{{class.hcName}}</div>
+									<div class="text-muted d-flex lh-1">{{class.subjects.length}} courses</div>
 								</div>
 							</div>
 						</div>
-						<a href="/course.html" class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite</a>
+						<a href="javascript:void(0)" class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite</a>
 					</div>
 				</div>
 
@@ -96,50 +96,35 @@
 				<div class="popover-course">
 					<div class="media">
 						<div class="media-left">
-							<img src="/images/paths/wordpress_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
+							<img src="/assets/images/paths/wordpress_40x40@2x.png" width="40" height="40" alt="Angular" class="rounded">
 						</div>
 						<div class="media-body">
-							<div class="card-title mb-0">WordPress</div>
+							<div class="card-title mb-0">{{class.hcName}}</div>
 							<p class="lh-1 mb-0">
 								<span class="text-black-50 small">with</span>
-								<span class="text-black-50 small font-weight-bold">Elijah Murray</span>
+								<span class="text-black-50 small font-weight-bold">{{class.teacher}}</span>
 							</p>
 						</div>
 					</div>
-					<p class="my-16pt text-black-70">Learn the fundamentals of working with Angular and how to create basic applications.</p>
+					<p class="my-16pt text-black-70">{{class.desc}}</p>
 
 					<div class="mb-16pt">
+						{{#each session.subjects as |subject|}}
+						{{#if isInString subject._id class.hcStreams}}
 						<div class="d-flex align-items-center">
 							<span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
-							<p class="flex text-black-50 lh-1 mb-0"><small>Fundamentals of working with Angular</small></p>
+							<p class="flex text-black-50 lh-1 mb-0"><small>{{subject.hcName}}</small></p>
 						</div>
-						<div class="d-flex align-items-center">
-							<span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
-							<p class="flex text-black-50 lh-1 mb-0"><small>Create complete Angular applications</small></p>
-						</div>
-						<div class="d-flex align-items-center">
-							<span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
-							<p class="flex text-black-50 lh-1 mb-0"><small>Working with the Angular CLI</small></p>
-						</div>
-						<div class="d-flex align-items-center">
-							<span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
-							<p class="flex text-black-50 lh-1 mb-0"><small>Understanding Dependency Injection</small></p>
-						</div>
-						<div class="d-flex align-items-center">
-							<span class="material-icons icon-16pt text-black-50 mr-8pt">check</span>
-							<p class="flex text-black-50 lh-1 mb-0"><small>Testing with Angular</small></p>
-						</div>
+						{{/if}}
+						{{/each}}
 					</div>
 
 					<div class="row align-items-center">
 						<div class="col-auto">
-							<div class="d-flex align-items-center mb-4pt">
-								<span class="material-icons icon-16pt text-black-50 mr-4pt">access_time</span>
-								<p class="flex text-black-50 lh-1 mb-0"><small>6 hours</small></p>
-							</div>
+							
 							<div class="d-flex align-items-center mb-4pt">
 								<span class="material-icons icon-16pt text-black-50 mr-4pt">play_circle_outline</span>
-								<p class="flex text-black-50 lh-1 mb-0"><small>12 lessons</small></p>
+								<p class="flex text-black-50 lh-1 mb-0"><small>{{class.subjects.length}}lessons</small></p>
 							</div>
 							<div class="d-flex align-items-center">
 								<span class="material-icons icon-16pt text-black-50 mr-4pt">assessment</span>
@@ -147,12 +132,12 @@
 							</div>
 						</div>
 						<div class="col text-right">
-							<a href="/path.html" class="btn btn-primary">View Path</a>
+							<a href="/path/{{class._id}}" class="btn btn-primary">View </a>
 						</div>
 					</div>
 				</div>
 			</div>
-
+			{{/each}}
 		</div>
 		
 		

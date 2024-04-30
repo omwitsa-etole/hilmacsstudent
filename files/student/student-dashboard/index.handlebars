@@ -63,7 +63,7 @@
 								<div class="dropdown-menu dropdown-menu-right">
 									{{#each result.courses as |class|}}
 										{{#if (isInString class._id exam.hcStreams)}}
-										<a href="/student/courses/lesson/{{class._id}}" class="dropdown-item">Take {{class.hcName}} </a>
+										<a href="/path/{{class._id}}" class="dropdown-item">Take {{class.hcName}} </a>
 										{{else}}
 										<a href="#" class="dropdown-item">{{class.hcName}}</a>
 										{{/if}}
@@ -191,9 +191,9 @@
 									</div>
 								</div>
 								{{#if (isInList subject._id session.user.subjects)}}
-								<a href="/path.html" class="ml-4pt btn btn-link text-secondary">Resume</a>
+								<a href="/path" class="ml-4pt btn btn-link text-secondary">Resume</a>
 								{{else}}
-								<a href="/path.html" class="ml-4pt btn btn-link text-secondary">Start</a>
+								<a href="/path" class="ml-4pt btn btn-link text-secondary">Start</a>
 								{{/if}}
 								
 							</div>
@@ -216,9 +216,9 @@
 							</div>
 							<div class="d-flex align-items-center justify-content-center">
 								{{#if (isInList subject._id session.user.subjects)}}
-								<a href="/path.html" class="btn btn-primary mr-8pt">Resume</a>
+								<a href="/path" class="btn btn-primary mr-8pt">Resume</a>
 								{{else}}
-								<a href="/path.html" class="btn btn-outline-secondary ml-0">Start over</a>
+								<a href="/path" class="btn btn-outline-secondary ml-0">Start over</a>
 								{{/if}}
 								
 								
@@ -262,7 +262,7 @@
 
 									<div class="card card--elevated card-course overlay js-overlay mdk-reveal js-mdk-reveal " data-partial-height="40" data-toggle="popover" data-trigger="click">
 
-										<a href="/student/courses/lesson/{{class._id}}" class="js-image" data-position="">
+										<a href="/path/{{class._id}}" class="js-image" data-position="">
 											<img src="/assets/images/paths/angular_430x168.png" alt="course">
 											<span class="overlay__content">
 												<span class="overlay__action d-flex flex-column text-center">
@@ -276,10 +276,10 @@
 											<div class="card-body">
 												<div class="d-flex">
 													<div class="flex">
-														<a class="card-title" href="/student/courses/lesson/{{class._id}}">{{class.hcName}}</a>
+														<a class="card-title" href="/path/{{class._id}}">{{class.hcName}}</a>
 														<small class="text-50 font-weight-bold mb-4pt"></small>
 													</div>
-													<a href="/student/courses/lesson/{{class._id}}" class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite</a>
+													<a href="/path/{{class._id}}" class="ml-4pt material-icons text-20 card-course__icon-favorite">favorite</a>
 												</div>
 												<div class="d-flex">
 													<div class="rating flex" style="display:none;">
@@ -315,9 +315,9 @@
 											</div>
 											<div class="d-flex align-items-center justify-content-center">
 												{{#if (isInList class._id session.user.courses)}}
-												<a href="/student/courses/lesson/{{class._id}}" class="btn btn-primary mr-8pt">Resume</a>
+												<a href="/path/{{class._id}}" class="btn btn-primary mr-8pt">Resume</a>
 												{{else}}
-												<a href="/student/courses/lesson/{{class._id}}" class="btn btn-outline-secondary ml-0">Start</a>
+												<a href="/path/{{class._id}}" class="btn btn-outline-secondary ml-0">Start</a>
 												
 												{{/if}}
 											</div>

@@ -35,7 +35,14 @@
 
     <script src="https://kit.fontawesome.com/c63faa1f51.js" crossorigin="anonymous"></script>
 
-
+    <style>
+        .material-icons{
+            display: none !important;
+        }
+        .app-settings-button{
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body class="layout-navbar-mini-fixed-bottom">
@@ -70,7 +77,7 @@
                         <span class="d-none d-md-block">School</span>
                     </a>
 
-                    <button class="btn btn-black mr-16pt" data-toggle="modal" data-target="#courses">Courses <i class="material-icons">arrow_drop_down</i></button>
+                    <button class="btn btn-black mr-16pt" data-toggle="modal" data-target="#courses">Courses <i class="fas fa-caret-down"></i></button>
 
                     <form class="search-form search-form--black search-form-courses d-none d-md-flex" action="library-filters.html">
                         <input type="text" class="form-control" placeholder="What would you like to learn?">
@@ -87,7 +94,7 @@
                                 <img width="32" height="32" class="rounded-circle" src="/img/defaults/avatar.jpg" alt="student" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-
+                                {{#if session.user}}
                                 <div class="dropdown-header"><strong>Student</strong></div>
                                 <a class="dropdown-item active" href="/student">Dashboard</a>
                                 <a class="dropdown-item" href="/student/courses">My Courses</a>
@@ -97,8 +104,10 @@
                                 <a class="dropdown-item" href="/student-edit-account.html">Edit Account</a>
                                 <a class="dropdown-item" href="/billing">Billing</a>
                                 <a class="dropdown-item" href="/billing/history">Payments</a>
-                                <a class="dropdown-item" href="/login">Logout</a>
-
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                                {{else}}
+                                <a class="dropdown-item" href="/login">Login</a>
+                                {{/if}}
 
                             </div>
                         </div>
@@ -109,7 +118,7 @@
                         <!-- Notifications dropdown -->
                         <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
                             <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown" data-dropdown-disable-document-scroll data-caret="false">
-                                <i class="material-icons">notifications</i>
+                                <i class="fa fa-bell"></i>
                                 <span class="badge badge-notifications badge-danger">2</span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -340,21 +349,7 @@
     <script src="/assets/js/app-settings.js"></script>
 
 
-    <!-- Global Settings -->
-    <script src="/assets/js/settings.js"></script>
-
-    <!-- Moment.js -->
-    <script src="/assets/vendor/moment.min.js"></script>
-    <script src="/assets/vendor/moment-range.min.js"></script>
-
-    <!-- Chart.js -->
-    <script src="/assets/vendor/Chart.min.js"></script>
-
-    <!-- Charts JS -->
-    <script src="/assets/js/chartjs.js"></script>
-
-    <!-- Chart.js Samples -->
-    <script src="/assets/modules/index.js"></script>
+    
 
 </body>
 

@@ -96,11 +96,14 @@ app.get('/results', auth,(req, res) => {
   res.render('student\\student-quiz-results', { pageTitle: 'Your Results',user:req.session.user });
 });
 
-
-app.get('/path.html', auth,(req, res) => {
-  res.render('paths', { pageTitle: 'Select Path',user:req.session.user ,session:req.session});
+app.get('/logout', auth,(req, res) => {
+  req.session = null
+  res.redirect("login")
 });
 
+app.use('/path', require("./routes/coursedetail.js"));
+
+app.use('/path.html', require("./routes/coursedetail.js"));
 
 
 app.get('/library-filters.html', auth,async (req, res) => {
@@ -178,8 +181,40 @@ app.get('/instructor', auth,(req, res) => {
 });
 
 
-app.get('/', (req, res) => {
-  res.render('home\\index', { pageTitle: 'Home' });
+app.get('/', async (req, res) => {
+  let result = {}
+  const library  = await fetchFunction(req.session.token,resource.SERVER+"/hapi/subjects/data","get",null,function(data,e){
+        if(data !== undefined){
+            result.subjects = data
+            return data
+        }
+        if(e.ok){
+            return data
+        }else{
+            return {message:"Response not ok =>",data}
+        }})
+    
+    result.subjects = result.subjects?.map(post => {
+      return { ...post, _id: post._id.toString() };
+    });
+    const classes  = await fetchFunction(req.session.token,resource.SERVER+"/hapi/classes/data","get",null,function(data,e){
+        if(data !== undefined){
+            result.classes = data
+            return data
+        }
+        if(e.ok){
+            return data
+        }else{
+            return {message:"Response not ok =>",data}
+        }
+        
+    })
+    result.classes = result.classes?.map(post => {
+      return { ...post, _id: post._id.toString() };
+    });
+  
+  
+  res.render('home\\index', { pageTitle: 'Home',library:result,user:req.session.user,session:req.session });
 });
 
 app.get('/index.html', (req, res) => {
