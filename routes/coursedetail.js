@@ -11,6 +11,7 @@ router.get('/:id', auth,async (req, res) => {
         if(data !== undefined){
             result.courses = [data.class]
             result.subjects = data.subjects
+            result.questions = data.questions
             result.user = data.user
             return data
         }
@@ -27,8 +28,8 @@ router.get('/:id', auth,async (req, res) => {
 	//let token = req.session.token
 	//req.session = result
 	//req.session.token = token
-    console.log("courses=>",req.session.courses)
-    res.render('coursedetail\\coursedetail\\course\\main\\index.handlebars', { pageTitle: result.courses[0].hcName,user:req.session.user,courses:req.session.courses ,session:req.session,course:result.courses[0]});
+    console.log("questions=>",result.questions)
+    res.render('coursedetail\\coursedetail\\course\\main\\index.handlebars', { pageTitle: result.courses[0].hcName,user:req.session.user,courses:req.session.courses ,session:req.session,course:result.courses[0],questions:result.questions});
 });
   
 router.get('/', auth,async (req, res) => {
