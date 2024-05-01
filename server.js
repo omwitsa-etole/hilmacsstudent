@@ -62,6 +62,9 @@ const isInList = (item, list) => {
 };
 
 const isInString = (item, string) => {
+  if(string === undefined){
+    return false
+  }
   if (!string.includes(item)) {
     return false;
   }
@@ -199,7 +202,7 @@ app.get('/', async (req, res) => {
     });
     const classes  = await fetchFunction(req.session.token,resource.SERVER+"/hapi/classes/data","get",null,function(data,e){
         if(data !== undefined){
-            result.classes = data
+            result.classes = data.classes
             return data
         }
         if(e.ok){

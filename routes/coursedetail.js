@@ -23,12 +23,12 @@ router.get('/:id', auth,async (req, res) => {
     
 	
 	req.session.subjects = result.subjects ? result.subjects:req.session.subjects
-    req.session.course = result.courses[0] ? result.courses : {hcName:undefined}
+    req.session.course = result.courses[0] ? result.courses[0] : {hcName:undefined}
 	//let token = req.session.token
 	//req.session = result
 	//req.session.token = token
-    console.log("course=>",req.session.course)
-    res.render('coursedetail\\coursedetail\\course\\main\\index.handlebars', { pageTitle: req.session.course.hcName,user:req.session.user ,session:req.session,course:req.session.course});
+    console.log("courses=>",req.session.courses)
+    res.render('coursedetail\\coursedetail\\course\\main\\index.handlebars', { pageTitle: result.courses[0].hcName,user:req.session.user,courses:req.session.courses ,session:req.session,course:result.courses[0]});
 });
   
 router.get('/', auth,async (req, res) => {
@@ -36,7 +36,7 @@ router.get('/', auth,async (req, res) => {
     const course  = await fetchFunction(req.session.token,resource.SERVER+"/hapi/classes/data/","get",null,function(data,e){
         console.log("data=>",data)
         if(data !== undefined){
-            result.courses = data
+            result.courses = data.classes
             result.subjects = data.subjects
             result.user = data.user
             return data
@@ -48,8 +48,8 @@ router.get('/', auth,async (req, res) => {
         }})
  
     console.log("result=>",result)
-	req.session.classes = result.courses
-	req.session.subjects = result.subjects
+	req.session.courses = result.courses
+	req.session.subjects = result.subjects ? result.subjects : req.session.subjects
     res.render('paths', { pageTitle: 'Select Path',user:req.session.user ,session:req.session});
 });
 
