@@ -59,22 +59,20 @@
 								<p class="text-50 mb-0 mt-n1">{{exam.hAbbr}}</p>
 							</div>
 							<div class="dropdown">
-								<a href="#" class="dropdown-toggle text-70" data-toggle="dropdown">Popular Topics</a>
-								<div class="dropdown-menu dropdown-menu-right">
-									{{#each result.courses as |class|}}
-										{{#if (isInString class._id exam.hcStreams)}}
-										<a href="/path/{{class._id}}" class="dropdown-item">Take {{class.hcName}} </a>
-										{{else}}
-										<a href="#" class="dropdown-item">{{class.hcName}}</a>
-										{{/if}}
-										
-									{{/each}}
-								</div>
+								<a href="#" class="dropdown-toggle text-70" data-toggle="dropdown">{{exam.hAbbr}}</a>
+								
 							</div>
 						</div>
 						<div class="card-body p-24pt">
-							<div class="chart" style="height: 144px;">
-
+							<div class="" style="height: 144px;">
+								{{#each result.courses as |class|}}
+									{{#if (isInString class._id exam.hcStreams)}}
+									<a href="/path/{{class._id}}" class="dropdown-item">Take {{class.hcName}} </a>
+									{{else}}
+									<a href="#" class="dropdown-item">{{class.hcName}}</a>
+									{{/if}}
+									
+								{{/each}}
 								{{#each result.courses as |class|}}
 									{{#if (isInString class._id exam.hcStreams)}}
 									<a href="" class="btn">Unit {{class.hcName}}</a>
