@@ -278,7 +278,7 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
                     <section class="main-title-section-wrapper dark-bg-breadcrumb ">
     <div class="main-title-section-container">
         <div class="container">
-            <div class="main-title-section"><h1>{{course.hcName}}</h1></div>
+            <div class="main-title-section"><h1>{{session.course.hcName}}</h1></div>
                     </div>
     </div>
     <div class="main-title-section-bg"></div>
@@ -310,7 +310,7 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
 											<div class="dtlms-courselist-progress-details">
 												<span class="dtlms-undergoing">
 													<label>Status : </label>
-													{{#if (isInList user._id course.users)}}
+													{{#if (isInList user._id session.course.users)}}
 														Undergoing
 													{{else}}
 														<button class="btn btn-primary enroll-class">Enroll</button>
@@ -321,13 +321,13 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
 								    </div>
 								</div>
 					            <div class="dtlms-main-title-section">
-				        <h2>{{course.hcName}}</h2>
+				        <h2>{{session.course.hcName}}</h2>
 				    </div>					            <div class="dtlms-course-detail-content left">
 					                <div class="dtlms-course-detail-content-meta">
-					                    <div class="dtlms-course-detail-author"><span>Instructor</span><div class="dtlms-course-detail-author-image"><img alt="" src="//www.gravatar.com/avatar/db40f846ab0a3b10522f83c6ae657e31?s=150&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/db40f846ab0a3b10522f83c6ae657e31?s=150&amp;r=g&amp;d=mm 2x" class="avatar avatar-150 photo" height="150" width="150" decoding="async"></div><div class="dtlms-course-detail-author-title"><h5><a href="https://dtlmselementor.wpengine.com/author/jimmorrison/" rel="author">{{course.teacher}}</a></h5></div></div>					                    <div class="dtlms-course-detail-curriculum">
-					                        <span>Curriculum</span>{{course.subjects.length}}
+					                    <div class="dtlms-course-detail-author"><span>Instructor</span><div class="dtlms-course-detail-author-image"><img alt="" src="//www.gravatar.com/avatar/db40f846ab0a3b10522f83c6ae657e31?s=150&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/db40f846ab0a3b10522f83c6ae657e31?s=150&amp;r=g&amp;d=mm 2x" class="avatar avatar-150 photo" height="150" width="150" decoding="async"></div><div class="dtlms-course-detail-author-title"><h5><a href="https://dtlmselementor.wpengine.com/author/jimmorrison/" rel="author">jim morrison</a></h5></div></div>					                    <div class="dtlms-course-detail-curriculum">
+					                        <span>Curriculum</span>{{session.course.subjects.length}}
 					                    </div>
-					                    <div class="dtlms-course-detail-ratings-container"><span>Reviews</span><div class="dtlms-course-detail-ratings"><span class="zmdi zmdi-star-outline" data-value="1"></span><span class="zmdi zmdi-star-outline" data-value="2"></span><span class="zmdi zmdi-star-outline" data-value="3"></span><span class="zmdi zmdi-star-outline" data-value="4"></span><span class="zmdi zmdi-star-outline" data-value="5"></span></div><div class="dtlms-course-detail-total-reviews">( 0 Review )</div></div>					                </div>
+					                    <div class="dtlms-course-detail-ratings-container"><span>Reviews</span><div class="dtlms-course-detail-ratings"><span class="zmdi zmdi-star-outline" data-value="1"></span><span class="zmdi zmdi-star-outline" data-value="2"></span><span class="zmdi zmdi-star-outline" data-value="3"></span><span class="zmdi zmdi-star-outline" data-value="4"></span><span class="zmdi zmdi-star-outline" data-value="5"></span></div><div class="dtlms-course-detail-total-reviews">( 1 Review )</div></div>					                </div>
 					            </div>
 					            <div class="dtlms-course-detail-content right"><div class="dtlms-coursedetail-price-details">
 						<span class="dtlms-price-status dtlms-free">
@@ -386,78 +386,31 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
 				</div>				</div>
 				
 		<div class="dtlms-tabs-horizontal-content" style="display: none;">
-			Ut ac euismod velit. Aliquam condimentum dolor accumsan, venenatis sapien eu, egestas nunc. Suspendisse euismod semper fermentum. Nulla eleifend nibh pretium mattis dapibus. Morbi blandit enim turpis, et vestibulum orci fermentum in. Vestibulum sodales lectus dolor, vitae suscipit ante volutpat dignissim.
-
-Nulla metus lectus, vestibulum in fermentum id, lobortis vitae eros. Vivamus sed accumsan metus. Pellentesque pretium leo sapien, vel commodo est feugiat non. Aliquam id nulla feugiat, auctor lacus ut, tristique lectus. Praesent ac fringilla mi.
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam sed dui ultrices, iaculis tellus non, bibendum nisl. Cras id sollicitudin neque. Duis sed ipsum nunc. Vivamus nec neque ac nulla malesuada semper a id leo. Donec condimentum auctor malesuada. Nullam dapibus in tellus nec aliquam.
-
-Aliquam nibh tortor, volutpat sit amet dapibus viverra, convallis sit amet turpis. Phasellus ac enim et odio auctor posuere. Donec pulvinar, urna ut molestie suscipit, magna mauris posuere tortor, nec feugiat lacus nulla eu odio. Suspendisse potenti. Nunc at sem vitae mi bibendum consectetur. Cras eget feugiat enim. Nunc consequat nibh sit amet ipsum ornare, vitae suscipit ipsum blandit. Nulla rhoncus est id sem fringilla iaculis. Proin dapibus sed elit id scelerisque. Etiam sed tempor sem, sed auctor felis.
-
-Fusce in metus lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit porta lacus, sed commodo ante luctus ullamcorper. Aliquam ornare tincidunt nulla sit amet vestibulum. Fusce venenatis odio ac quam aliquam lobortis. Nulla porttitor, lacus vel dapibus adipiscing, augue odio tristique ligula, quis porta velit lectus ac est. Proin sit amet leo at lorem iaculis interdum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam sed odio tortor.		</div>
+			{{course.desc}}
+			</div>
 
 		
 
 					<div class="dtlms-tabs-horizontal-content" style="display: none;">
 				<div class="dtlms-title">Members</div>
-				<h4 class="dtlms-course-detail-total-students">Total number of Students in this course :  <span>22</span></h4><ul class="dtlms-course-detail-students-enrolled-list"><li>
+				<h4 class="dtlms-course-detail-total-students">Total number of Students in this course :  <span>{{course.users.length}}</span></h4><ul class="dtlms-course-detail-students-enrolled-list"><li>
 											<img alt="" src="//www.gravatar.com/avatar/d2870e384d55bb5b77095b72c915a47a?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/d2870e384d55bb5b77095b72c915a47a?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>dtlmsele</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/b7ac9ba42f89ff29e4e8738177f6a364?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/b7ac9ba42f89ff29e4e8738177f6a364?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>kesavan</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/73cdecda088c6fa2c3a1b46ecf4ee4cf?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/73cdecda088c6fa2c3a1b46ecf4ee4cf?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>omarelshaer93@gmail.com</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/ed7efc6d125f67fcf3bc890f84fad86e?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/ed7efc6d125f67fcf3bc890f84fad86e?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>ferchajou1984</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/c05bcd5f214d8140a35a1eeead900f4f?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/c05bcd5f214d8140a35a1eeead900f4f?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>younus</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/8d8baa54601248a51417004c791e0ffa?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/8d8baa54601248a51417004c791e0ffa?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>test</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/1b215757d96474d5b954b5ccbf8e19ed?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/1b215757d96474d5b954b5ccbf8e19ed?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>Adeel</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/9ad574806427070b94735f216e9abdc1?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/9ad574806427070b94735f216e9abdc1?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>testing</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/8c467c3e222463feb3e4a6bd7e63da96?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/8c467c3e222463feb3e4a6bd7e63da96?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>hibban</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/295a73bfad559aabb93154afdb82f596?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/295a73bfad559aabb93154afdb82f596?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>farhan</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/2347c3a0721ce2b09fa080559cba6806?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/2347c3a0721ce2b09fa080559cba6806?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>hraja</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/bc88581e60acefe33b79a19de7b0b4c4?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/bc88581e60acefe33b79a19de7b0b4c4?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>lehrerle</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/742f2b1a55cd5d606ea44b4fcb54646a?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/742f2b1a55cd5d606ea44b4fcb54646a?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>elizzarz</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/5672c72515c5e1e78997b29dbb745900?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/5672c72515c5e1e78997b29dbb745900?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>listingcontrol</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/c958f3919cce17ed496a38b60b9b9093?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/c958f3919cce17ed496a38b60b9b9093?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>web</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/2af68d3e927b00739b605c984be80bdc?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/2af68d3e927b00739b605c984be80bdc?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>vijayk</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/326fbd1afb885b4646aeb2881b70e0ee?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/326fbd1afb885b4646aeb2881b70e0ee?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>deegrand</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/ffc7ff2cb6bacf32b9a74f775ad89cff?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/ffc7ff2cb6bacf32b9a74f775ad89cff?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>webs</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/4608f23e9c5d928b9285c0116a95d132?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/4608f23e9c5d928b9285c0116a95d132?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>sudobash</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/908f3733c13b77206fd06c159b84d30f?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/908f3733c13b77206fd06c159b84d30f?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>yash.agarwal.nt@gmail.com</h5>
-										</li><li>
-											<img alt="" src="//www.gravatar.com/avatar/eaf42ea18e9c212d148d955e6ef8defb?s=96&amp;r=g&amp;d=mm" srcset="//www.gravatar.com/avatar/eaf42ea18e9c212d148d955e6ef8defb?s=96&amp;r=g&amp;d=mm 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async"><h5>White Hat</h5>
-										</li></ul>			</div>
+										</li></ul>			
+								</div>
 			
 		<div class="dtlms-tabs-horizontal-content" style="display: none;">
 
 			
 			<div class="dtlms-title">Instructors</div>
-
-			<div class="dtlms-instructor-item dtlms-column dtlms-one-half first type1  default "><img src="https://dtlmselementor.wpengine.com/wp-content/uploads/2023/11/Teacher-image-2.jpg" alt="Instructor Image" title="Instructor Image"><div class="dtlms-instructor-item-meta-data"><h4>
-											<a href="https://dtlmselementor.wpengine.com/author/jamescatwin/" rel="author">
-												james catwin
-											</a>
-										</h4><h5>Art Director</h5><div class="dtlms-team-social-links"><ul class="dtlms-team-social"><li><a class="fab fa-facebook-f" href="https://www.facebook.com/"></a></li><li><a class="fab fa-twitter" href="https://twitter.com/i/flow/login"></a></li><li><a class="fab fa-instagram" href="https://www.instagram.com/accounts/login/"></a></li></ul></div></div></div><div class="dtlms-instructor-item dtlms-column dtlms-one-half  type1  default "><img src="https://dtlmselementor.wpengine.com/wp-content/uploads/2023/11/Teacher-image-4.jpg" alt="Instructor Image" title="Instructor Image"><div class="dtlms-instructor-item-meta-data"><h4>
-											<a href="https://dtlmselementor.wpengine.com/author/jimmorrison/" rel="author">
-												jim morrison
-											</a>
-										</h4><h5>Chief Programmer</h5><div class="dtlms-team-social-links"><ul class="dtlms-team-social"><li><a class="fab fa-facebook-f" href="https://www.facebook.com/"></a></li><li><a class="fab fa-twitter" href="https://twitter.com/i/flow/login"></a></li><li><a class="fab fa-instagram" href="https://www.instagram.com/accounts/login/"></a></li></ul></div></div></div>
+			{{#each course.instructors as |teacher|}}
+			<div class="dtlms-instructor-item dtlms-column dtlms-one-half  type1  default ">
+				<img src="https://dtlmselementor.wpengine.com/wp-content/uploads/2023/11/Teacher-image-4.jpg" alt="Instructor Image" title="Instructor Image">
+				<div class="dtlms-instructor-item-meta-data"><h4>
+					<a href="#" rel="author">
+						{{teacher}}
+					</a>
+				</h4><h5>Teacher</h5></div></div>
+			{{/each}}
 		</div>
 
 						<div class="dtlms-tabs-horizontal-content" style="display: none;">

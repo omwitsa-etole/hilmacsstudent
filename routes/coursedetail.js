@@ -20,13 +20,14 @@ router.get('/:id', auth,async (req, res) => {
             return {message:"Response not ok =>",data}
         }})
  
-    console.log("result=>",result)
+    
 	
 	req.session.subjects = result.subjects ? result.subjects:req.session.subjects
     req.session.course = result.courses[0] ? result.courses : {hcName:undefined}
 	//let token = req.session.token
 	//req.session = result
 	//req.session.token = token
+    console.log("course=>",req.session.course)
     res.render('coursedetail\\coursedetail\\course\\main\\index.handlebars', { pageTitle: req.session.course.hcName,user:req.session.user ,session:req.session,course:req.session.course});
 });
   
